@@ -7,7 +7,7 @@ CM_DICT_KEY="PR"
 OUTPUT_FILE_PREFIX="cm-craft-pr"
 # precision-optimized param index = 286 
 # f-score-optimized param index = 478
-PARAM_INDEX=286
+PARAM_INDEX=478
 
 if ! [[ -e README.md ]]; then
     echo "Please run from the root of the project."

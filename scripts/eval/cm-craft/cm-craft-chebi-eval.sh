@@ -7,7 +7,7 @@ CM_DICT_KEY="CHEBI"
 OUTPUT_FILE_PREFIX="cm-craft-chebi"
 # precision-optimized param index = 189 or 93 
 # f-score-optimized param index = 13
-PARAM_INDEX=189
+PARAM_INDEX=13
 
 if ! [[ -e README.md ]]; then
     echo "Please run from the root of the project."

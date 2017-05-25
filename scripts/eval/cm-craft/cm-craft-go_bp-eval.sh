@@ -7,7 +7,7 @@ CM_DICT_KEY="GO_BP"
 OUTPUT_FILE_PREFIX="cm-craft-go_bp"
 # precision-optimized param index = 47 
 # f-score-optimized param index = 28
-PARAM_INDEX=47
+PARAM_INDEX=28
 
 if ! [[ -e README.md ]]; then
     echo "Please run from the root of the project."
