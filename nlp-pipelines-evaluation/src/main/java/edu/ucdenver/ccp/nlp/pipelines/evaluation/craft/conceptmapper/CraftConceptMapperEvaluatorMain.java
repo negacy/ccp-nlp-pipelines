@@ -44,6 +44,8 @@ import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.log4j.Logger;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.resource.ResourceInitializationException;
+import org.cleartk.clearnlp.DependencyParser;
+import org.cleartk.clearnlp.MpAnalyzer;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
@@ -132,14 +134,21 @@ public class CraftConceptMapperEvaluatorMain {
 			 * pipeline, uncomment the following line and swap the catch line
 			 * below the one that is commented:
 			 */
-			// postProcessingComponentDescriptions.add(SamplePostProcessingComponent.getDescription("my_ontology_name"));
+			
+			//post-processing using POS tagging
+			postProcessingComponentDescriptions.add(SequenceBasedPosTaggingPostProcessingComponent.getDescription("my_ontology_name"));
+			//post-processing using dependency parsing
+//			postProcessingComponentDescriptions.add(MpAnalyzer.getDescription());
+//			postProcessingComponentDescriptions.add(DependencyParser.getDescription());
+//			postProcessingComponentDescriptions.add(DependencyBasedPostProcessingComponent.getDescription("my_ontology_name"));
+			
 			CraftConceptMapperEvaluator.evaluateCmPipelineAgainstCraft(dictionaryNamespace,
 					EnumSet.of(craftConceptType), dictionaryDirectory, evalResultsFile, conceptMapperParameterIndex,
 					cleanDictFiles, postProcessingComponentDescriptions, dictEntryModifier);
-			// } catch (IOException | ResourceInitializationException e) {
+			 } catch (IOException | ResourceInitializationException e) {
 			
 			logger.info("Evaluation elapsed time: " + ((System.currentTimeMillis()-time)/1000) + "s");
-		} catch (IOException e) {
+		//} catch (IOException e) {
 			logger.error("Error during ConceptMapper evaluation over CRAFT!!", e);
 			System.exit(-1);
 		}
